@@ -1,0 +1,20 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "myEmailDataSource": {
+    "name": "myEmailDataSource",
+    "connector": "mail",
+    "transports": [{
+      "type": "SMTP",
+      "host": "smtp.gmail.com",
+      "secure": true,
+      "port": 465,
+      "auth": {
+        "user": "masti13harsh@gmail.com",
+        "pass": "tatkrojvjpqlbnyg"
+      }
+    }]
+  }
+}
