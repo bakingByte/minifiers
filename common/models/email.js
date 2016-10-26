@@ -2,17 +2,21 @@
 var AWS = require('aws-sdk');
 
 AWS.config.update({
-    accessKeyId: "YOURKEY",
-    secretAccessKey: "YOURSECRET",
-    "region": "sa-east-1"
+    accessKeyId: "AKIAJGOKBVHVHSWTK2OA",
+    secretAccessKey: "TzNZM4L2cAqQmCQzpgSuzIdOPJsyvDd6+Hkwe3K4",
+    "region": "ap-southeast-1"
 });
 
 
 module.exports = function(Email) {
-    Email.sendEmail = function (mailInfo, cb) {
+    Email.sendEmail = function (name, email, subject, message, cb) {
         var sns = new AWS.SNS({ region: 'ap-southeast-1'});
 
-        var snsMessage = 'New signup: %EMAIL%'; //Send SNS notification containing email from form.
+        var snsMessage = '<html><body><h2>Name: %NAME%</h2></body></html> \nEmail: %EMAIL% \nSubject: %SUBJECT% \nMessage: %MESSAGE%'; //Send SNS notification containing email from form.   
+        snsMessage = snsMessage.replace('%NAME%', name);
+        snsMessage = snsMessage.replace('%EMAIL%', email);
+        snsMessage = snsMessage.replace('%SUBJECT%', subject);
+        snsMessage = snsMessage.replace('%MESSAGE%', message);; //Send SNS notification containing email from form.
         sns.publish({ TopicArn: 'arn:aws:sns:ap-southeast-1:002732868379:ContactUs', Message: snsMessage }, function(err, data) {
             if (err) {
             console.log('Error publishing SNS message: ' + err);
@@ -28,16 +32,33 @@ module.exports = function(Email) {
         'sendEmail', {
             http: {
                 path: '/sendEmail',
-                verb: 'get'
+                verb: 'post'
             },
             description: [
                 "api to send email"
             ],
-            accepts: {
-                arg: 'mailInfo',
-                type: 'object',
-                required: 'true'
-            },
+            accepts: [
+                {
+                    arg: 'name',
+                    type: 'string',
+                    required: 'true'
+                },
+                {
+                    arg: 'email',
+                    type: 'string',
+                    required: 'true'
+                },
+                {
+                    arg: 'subject',
+                    type: 'string',
+                    required: 'true'
+                },
+                {
+                    arg: 'message',
+                    type: 'string',
+                    required: 'true'
+                }
+            ],
             returns: {
                 arg: 'greeting',
                 type: 'string'

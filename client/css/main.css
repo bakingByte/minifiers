@@ -369,7 +369,7 @@ section {
 ********About CSS*******
 **************************/
 #about-us {
-  background-image: url(../images/about-bg.jpg);
+  background-image: url(../images/about-bg.png);
   padding: 60px 0;
 }
 
@@ -675,7 +675,7 @@ section {
 **************************/
 #features {
   text-align: center;
-  background-image: url(../images/features-bg.jpg);
+  background-image: url(../images/background-about-us.jpg);
 }
 
 #features i {
@@ -1039,4 +1039,22 @@ ul.address {
 
 /*Presets*/
 
+@media (min-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */
+  #navbarLogo {
+    width: 80%;
+    height: 80%;
+  }
+}
+@media (min-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ 
+  #navbarLogo {
+    width: 80%;
+    height: 80%;
+  }
+}
 
+@media (min-width:641px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+  #navbarLogo {
+    width: 80%;
+    height: 80%;
+  }
+}
