@@ -16,7 +16,8 @@
     "serve-favicon": "^2.0.1",
     "strong-error-handler": "^1.0.1",
     "loopback-datasource-juggler": "^2.39.0",
-    "loopback": "^2.22.0"
+    "loopback": "^2.22.0",
+    "aws-sdk": "*"
   },
   "devDependencies": {
     "eslint": "^2.13.1",

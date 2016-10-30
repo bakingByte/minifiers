@@ -157,14 +157,26 @@ $(document).ready(function() {
 	form.submit(function(event){
 		event.preventDefault();
 		var form_status = $('<div class="form_status"></div>');
-		$.ajax({
+		$.post( "/api/email/sendEmail?mailInfo=", $("#main-contact-form").serialize(),
+                function(data) {
+                  form.prepend(form_status.html('<h4 class="text-success" style="color: green">Thank you for contacting us. As early as possible we will contact you.</h4>'));
+                }
+              )
+              .error(function(xhr) {
+			  	 form_status.html('<p class="text-success">Oops something is wrong</p>').delay(3000).fadeOut();                
+              });
+              /*.always(function() {
+                $("#signupModal").modal('hide');
+              });*/
+			  
+		/*$.ajax({
 			url: $(this).attr('action'),
 			beforeSend: function(){
 				form.prepend( form_status.html('<p><i class="fa fa-spinner fa-spin"></i> Email is sending...</p>').fadeIn() );
 			}
 		}).done(function(data){
 			form_status.html('<p class="text-success">Thank you for contact us. As early as possible  we will contact you</p>').delay(3000).fadeOut();
-		});
+		});*/
 	});
 
 	//Google Map
