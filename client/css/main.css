@@ -1101,3 +1101,7 @@ ul.address {
 	.carousel-inner .next        { left:  16.7%; }
 	.carousel-inner .prev		 { left: -16.7%; }	
 }
+
+.carousel-inner .img-responsive {
+    margin: 0 auto;
+}
