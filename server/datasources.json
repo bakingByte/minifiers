@@ -2,19 +2,5 @@
   "db": {
     "name": "db",
     "connector": "memory"
-  },
-  "myEmailDataSource": {
-    "name": "myEmailDataSource",
-    "connector": "mail",
-    "transports": [{
-      "type": "SMTP",
-      "host": "email-smtp.us-east-1.amazonaws.com",
-      "secure": true,
-      "port": 465,
-      "auth": {
-        "user": "AKIAIAG3KHZFNGFMEFYA",
-        "pass": "AtLm27wa//FNGpQ643/fHgF6SgZlPM2XY/Td5oR6DSO/"
-      }
-    }]
   }
 }

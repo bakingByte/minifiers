@@ -1,18 +1,11 @@
 'use strict';
 var AWS = require('aws-sdk');
 
-AWS.config.update({
-    accessKeyId: "AKIAJGOKBVHVHSWTK2OA",
-    secretAccessKey: "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",
-    "region": "ap-southeast-1"
-});
-
-
 module.exports = function(Email) {
     Email.sendEmail = function (name, email, subject, message, cb) {
         var sns = new AWS.SNS({ region: 'ap-southeast-1'});
 
-        var snsMessage = '<html><body><h2>Name: %NAME%</h2></body></html> \nEmail: %EMAIL% \nSubject: %SUBJECT% \nMessage: %MESSAGE%'; //Send SNS notification containing email from form.   
+        var snsMessage = 'Name: %NAME% \nEmail: %EMAIL% \nSubject: %SUBJECT% \nMessage: %MESSAGE%'; //Send SNS notification containing email from form.   
         snsMessage = snsMessage.replace('%NAME%', name);
         snsMessage = snsMessage.replace('%EMAIL%', email);
         snsMessage = snsMessage.replace('%SUBJECT%', subject);

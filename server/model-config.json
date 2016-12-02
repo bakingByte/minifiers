@@ -33,7 +33,11 @@
     "public": false
   },
   "email": {
-    "dataSource": "myEmailDataSource",
+    "dataSource": "db",
+    "public": true
+  },
+  "minifier": {
+    "dataSource": "db",
     "public": true
   }
 }
